@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Dice Roll</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <link rel="icon" href="assets/icon.png" />
+</head>
+
+<body>
+  <div class="mx-auto">
+
+    <!-- Background  -->
+    <div class="back-canvas">
+
+      <!-- Video -->
+      <video id="bg" autoplay muted loop src="assets/bg.mp4"></video>
+
+      <!-- dice.js -->
+      <canvas id="dice"></canvas>
+    </div>
+
+    <!-- Title -->
+    <div class="front-canvas mx-auto" style="top: 10%; transform: translate(-50%, -50%); left: 50%">
+      <div class="p-2">
+        <h1 class="title mt-4 text-center">3D Dice Roll</h1>
+      </div>
+    </div>
+
+    <!-- Button Start -->
+    <div class="p-2 front-canvas mx-auto" style="top: 90%">
+      <a href="menu.html"><button id="start">
+          <span class="span-button">Start <i class="bi bi-arrow-right"></i></span></button></a>
+    </div>
+  </div>
+
+  <!-- Import JS   -->
+  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/dice.js"></script>
+</body>
+
+<!-- internal css style -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+
+  * {
+    font-family: "Nova Square", cursive;
+  }
+
+  .back-canvas {
+    z-index: 1;
+  }
+
+  .front-canvas {
+    z-index: 3;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+  }
+
+  canvas {
+    margin: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  /* bg id  */
+  #bg {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .img-fluid {
+    max-width: 35%;
+    max-height: 35%;
+  }
+
+  /* button */
+  button {
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  .span-button {
+    font-size: 50px;
+  }
+
+  button#start {
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    width: 300px;
+    /* padding: 1.25em 2em; */
+    background: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 0.75em;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+      background 150ms cubic-bezier(0, 0, 0.58, 1);
+    background-color: #032251;
+    align-items: center;
+  }
+
+  button#start::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #bebebe;
+    border-radius: inherit;
+
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+      box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  }
+
+  button#start:hover {
+    background: #a9b1ff;
+    color: black;
+    transform: translate(0, 0.25em);
+  }
+
+  button#start:hover::before {
+    transform: translate3d(0, 0.5em, -1em);
+  }
+
+  button#start:active {
+    background: #ffe9e9;
+    transform: translate(0em, 0.75em);
+  }
+
+  button#start:active::before {
+    box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    transform: translate3d(0, 0, -1em);
+  }
+
+  /* title */
+  .title {
+    color: #000000;
+
+    font-size: 100px;
+    font-weight: bolder;
+    text-shadow: -0.0075em 0.0075em 0 #fef2f6, 0.005em 0.005em 0 #000000,
+      0.01em 0.01em 0 #747474, 0.015em 0.015em #b3b3b3,
+      0.02em 0.02em 0 #d6d6d6, 0.025em 0.025em 0 #5f5f5f,
+      0.03em 0.03em 0 #555555, 0.035em 0.035em 0 #bbbbbb;
+    margin-top: 10px;
+  }
+
+  /* responsive design */
+  @media only screen and (max-width: 1366px) {
+    .img-fluid {
+      max-width: 25%;
+      max-height: 25%;
+    }
+  }
+
+  @media only screen and (min-width: 359px) and (max-width: 768px) {
+    .img-fluid {
+      max-width: 50%;
+      max-height: 50%;
+    }
+
+    .title {
+      font-size: 80px;
+    }
+
+    .span-button {
+      font-size: 40px;
+    }
+  }
+</style>
+
+</html>
